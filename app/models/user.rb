@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
 
   has_many :events
   has_many :comments
+  has_many :tasks
 
   def admin
   	has_role? :admin

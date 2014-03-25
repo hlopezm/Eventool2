@@ -4,6 +4,7 @@ Ironevents::Application.routes.draw do
   devise_for :users
 
   resources :users, except: [:new, :create, :destroy]
+  resources :tasks
 
   root :to => "events#index"
 
