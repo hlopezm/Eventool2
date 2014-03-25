@@ -4,7 +4,6 @@ Ironevents::Application.routes.draw do
   devise_for :users
 
   resources :users, except: [:new, :create, :destroy]
-  resources :tasks
 
   root :to => "events#index"
 
@@ -17,7 +16,8 @@ Ironevents::Application.routes.draw do
     end
   end
 
-
+  resources :tasks
+  #
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
