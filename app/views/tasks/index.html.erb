@@ -1,0 +1,64 @@
+<h1><%= Task.model_name.human(count: 2) %></h1>
+
+<% if @tasks.empty? %>
+
+    <p>No tasks found.</p>
+<% else %>
+<table>
+    <thead>
+    <tr>
+        <th>
+            <%= Task.human_attribute_name(:title) %>
+        </th>
+        <th>
+            <%= t '.date_header' %>
+        </th>
+        <th>
+            <%= t 'user' %>
+        </th>
+        <th>
+            <%= t 'status' %>
+        </th>
+
+        <th>
+            <%= t 'index_actions' %>
+        </th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <% @tasks.each do |task| %>
+
+    <tr>
+        <td>
+            <%= link_to task.title, task_path(task) %>
+        </td>
+        <td>
+             <%= task.event.name %>
+
+        </td>
+        <td>
+          <%= task.user.email %>
+        </td>
+
+        <td>
+            <%= l task.created_at, format: :short %>
+        </td>
+        <td>
+
+            <% if policy(event).edit? %>
+                <%= link_to t('.edit'), edit_event_path(event) %><br>
+            <% end %>
+            <% if policy(event).destroy? %>
+                <%= link_to "Delete", event_path(event), {method: :delete, class: 'small', confirm: 'Are you sure?'} %>
+            <% end %>
+        </td>
+
+    <% end %>
+    </tbody>
+</table>
+<% end %>
+
+<% if policy(Event).new? %>
+    <%= link_to t(".new_event"), new_event_path, class: 'small radius button' %>
+<% end %>
