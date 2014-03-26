@@ -44,13 +44,29 @@
         <td>
             <%= link_to invitation.user.email, invitation_path(invitation) %>
         </td>
+
+        <td>
+          <%=  %>
+        </td>
+
         <td>
              <%= invitation.sender%>
         </td>
+
         <td>
           <%= invitation.receiver%>
         </td>
 
+        <td>
+          <%= invitation.user_id %>
+        </td>
+
+        <td>
+         <%= invitation.delivered_at%>
+        </td>
+        <td>
+          <%= invitation.confirmed_at%>
+        </td>
 
     </td>
     <% end %>
