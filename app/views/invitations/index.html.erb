@@ -1,0 +1,60 @@
+<h1><%= Invitation.model_name.human(count: 2) %></h1>
+
+<% if @invitations.empty? %>
+
+    <p>No invitations found.</p>
+<% else %>
+<table>
+    <thead>
+    <tr>
+        <th>
+            <%= Invitation.human_attribute_name(:sender) %>
+        </th>
+
+        <th>
+            <%= t 'invitado' %>
+        </th>
+
+        <th>
+            <%= t 'status' %>
+        </th>
+
+        <th>
+            <%= t 'user' %>
+        </th>
+
+        <th>
+            <%= t 'fecha de envio' %>
+        </th>
+
+        <th>
+            <%= t 'fecha de entrega' %>
+        </th>
+
+        <th>
+            <%= t 'index_actions' %>
+        </th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <% @invitations.each do |invitation| %>
+
+    <tr>
+        <td>
+            <%= link_to invitation.user.email, invitation_path(invitation) %>
+        </td>
+        <td>
+             <%= invitation.sender%>
+        </td>
+        <td>
+          <%= invitation.receiver%>
+        </td>
+
+
+    </td>
+    <% end %>
+    </tbody>
+</table>
+<% end %>
+
