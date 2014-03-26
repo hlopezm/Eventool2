@@ -1,6 +1,8 @@
 class TasksController < ApplicationController
 
   def index
+    @incomplete_tasks = Task.find(:all, :conditions => "finish IS NULL")
+    @complete_tasks = Task.find(:all, :conditions => "finish IS NOT NULL")
     @tasks = Task.all
   end
   def show
@@ -9,9 +11,11 @@ class TasksController < ApplicationController
   def new
     @task = tasks.build
   end
-  def method_name
-    
-  end
+
+
+#  def complete
+#  Task.update_all(["finish=?", True, :id => params[:task_ids])
+#end
 
   private
 

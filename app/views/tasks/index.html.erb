@@ -35,7 +35,6 @@
         </td>
         <td>
              <%= task.event.name %>
-
         </td>
         <td>
           <%= task.user.email %>
@@ -43,22 +42,9 @@
 
         <td>
             <%= l task.created_at, format: :short %>
-        </td>
-        <td>
-
-            <% if policy(event).edit? %>
-                <%= link_to t('.edit'), edit_event_path(event) %><br>
-            <% end %>
-            <% if policy(event).destroy? %>
-                <%= link_to "Delete", event_path(event), {method: :delete, class: 'small', confirm: 'Are you sure?'} %>
-            <% end %>
-        </td>
-
+          </td>
+    </td>
     <% end %>
     </tbody>
 </table>
-<% end %>
-
-<% if policy(Event).new? %>
-    <%= link_to t(".new_event"), new_event_path, class: 'small radius button' %>
 <% end %>
