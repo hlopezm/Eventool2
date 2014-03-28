@@ -8,6 +8,9 @@ class CreateEvents < ActiveRecord::Migration
       t.string :address
 
       t.timestamps
+      t.references :user
+      t.references :invitations
+      t.references :guest
     end
   end
 end

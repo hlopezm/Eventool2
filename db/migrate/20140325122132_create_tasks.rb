@@ -6,7 +6,6 @@ class CreateTasks < ActiveRecord::Migration
       t.string :description, limit: 400
       t.timestamps
       t.references :event
-      t.references :user
     end
   end
 end
