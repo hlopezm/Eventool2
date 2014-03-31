@@ -15,23 +15,22 @@ class TasksController < ApplicationController
   end
 
   def update
-      @task = Task.find(params[:id])
-      if @task.update edit_parameters
-        redirect_to root_path
+    authorize @task
+
+      if @task.update update_params
+         redirect_to @task, notice: "#{@task.name} updated"
       else
         render 'edit'
       end
     end
 
  def new
-   @task = Task.new
+    @task = current_user.tasks.build
   end
 
   def create
-    @task = Task.new(create_params)
- 
-
-    authorize @task
+    @task = Tasks.new(task_params)
+        authorize @task
 
     if @task.save
       redirect_to @task
@@ -41,25 +40,17 @@ class TasksController < ApplicationController
   end
 
 
-  #  def complete
-  #  Task.update_all(["finish=?", True, :id => params[:task_ids])
-  #end
-
-    private
+ private
 
     def set_task
       @task = Task.find params[:id]
     end
 
-    def create_params
-      params.require(:task).permit(*policy(Task).new_permitted_attrs)
-    end
+  def task_params
+    params.require(:task).permit(:admin)
+  end
 
-    def update_params
-      params.require(:task).permit(*policy(@task).edit_permitted_attrs)
-    end
-
-    def edit_parameters
+  def update_params
       params.require(:task).permit(:admin)
   end
 

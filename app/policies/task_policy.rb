@@ -25,10 +25,10 @@ class TaskPolicy < ApplicationPolicy
   end
 
   def new_permitted_attrs
-    [:name, :description, :start_at, :end_at]
+    [:name, :description, :start_at, :end_at, :user_id, :event_id]
   end
 
   def edit_permitted_attrs
-    [:name, :description, :start_at, :end_at]
+    [:name, :description, :start_at, :end_at, :user_id, :event_id]
   end
 end

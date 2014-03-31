@@ -1,0 +1,23 @@
+<h1>
+    <%= @task.title %>
+</h1>
+<p>
+    <%= @task.description %>
+</p>
+
+<p>
+    <b>Dates:</b>
+    <%= l @task.created_at, format: :short %>
+    -
+    <%= l @task.updated_at, format: :short %>
+</p>
+<ul><% @event.tasks.each do |task| %>
+  <li>
+    <strong><%= task.title %> </strong><br />
+    <%= task.description %><br />
+    Asignado a:<%= task.user.email %>
+  </li>
+    <% end %>
+</ul>
+
+
