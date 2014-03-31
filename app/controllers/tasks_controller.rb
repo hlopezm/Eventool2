@@ -23,6 +23,24 @@ class TasksController < ApplicationController
       end
     end
 
+ def new
+   @task = Task.new
+  end
+
+  def create
+    @task = Task.new(create_params)
+ 
+
+    authorize @task
+
+    if @task.save
+      redirect_to @task
+    else
+      render :new
+    end
+  end
+
+
   #  def complete
   #  Task.update_all(["finish=?", True, :id => params[:task_ids])
   #end
@@ -30,7 +48,7 @@ class TasksController < ApplicationController
     private
 
     def set_task
-      @event = Task.find params[:id]
+      @task = Task.find params[:id]
     end
 
     def create_params
