@@ -17,7 +17,7 @@ class TasksController < ApplicationController
   end
 
   def new
-        @task = Task.new
+   @person = current_user.tasks.build
   end
 
   def create
