@@ -11,7 +11,7 @@ class CreateInvitations < ActiveRecord::Migration
       t.timestamps
       t.references :event
       t.references :user
-      t.references :guest
+      t.references :person
     end
   end
 end

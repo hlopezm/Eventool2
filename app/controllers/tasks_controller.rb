@@ -15,29 +15,29 @@ class TasksController < ApplicationController
   end
 
   def update
-    authorize @task
+    @task = Task.find params[:id]
 
-      if @task.update update_params
-         redirect_to @task, notice: "#{@task.name} updated"
-      else
+     if @task.update  update_params
+        redirect_to @task, notice: "#{@task.name} updated"
+     else
         render 'edit'
+     end
+    end
+
+     def new
+        @task = Task.new
       end
-    end
 
- def new
-    @task = current_user.tasks.build
-  end
+    def create
 
-  def create
-    @task = Tasks.new(task_params)
-        authorize @task
+      @task = Task.find params[:id] task_params
 
-    if @task.save
+      if @task.save
       redirect_to @task
-    else
+      else
       render :new
-    end
-  end
+      end
+     end
 
 
  private

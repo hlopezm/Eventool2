@@ -1,3 +1,6 @@
+<% if @task.empty? %>
+    <p>No task found.</p>
+<% else %>
 <h1>
     <%= @task.title %>
 </h1>
@@ -11,7 +14,7 @@
     -
     <%= l @task.updated_at, format: :short %>
 </p>
-<ul><% @event.tasks.each do |task| %>
+<ul><% @task.event.tasks.each do |task| %>
   <li>
     <strong><%= task.title %> </strong><br />
     <%= task.description %><br />

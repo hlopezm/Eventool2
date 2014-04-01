@@ -11,7 +11,7 @@
             <%= Task.human_attribute_name(:title) %>
         </th>
         <th>
-            <%= t '.date_header' %>
+            <%= t 'description' %>
         </th>
         <th>
             <%= t 'user' %>
@@ -34,16 +34,22 @@
             <%= link_to task.title, task_path(task) %>
         </td>
         <td>
-             <%= task.event.name %>
+             <%= task.description %>
         </td>
-        <td>
-          <%= task.user.email %>
-        </td>
+
 
         <td>
             <%= l task.created_at, format: :short %>
-          </td>
-    </td>
+        </td>
+
+        <td>
+        </td>
+
+        <td>
+           <%= link_to t('.edit'), edit_task_path(task) %><br>
+           <%= link_to "Delete", task_path(task), {method: :delete, class: 'small', confirm: 'Are you sure?'} %>
+        </td>
+   </td>
     <% end %>
     </tbody>
 </table>
