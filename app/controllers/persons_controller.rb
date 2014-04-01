@@ -4,7 +4,7 @@ class PersonsController < ApplicationController
   before_action :set_person, only: [:edit, :update, :destroy]
 
   def index
-    @persons = person.all
+    @persons = Person.all
 
     respond_to do |format|
       format.html
@@ -17,13 +17,11 @@ class PersonsController < ApplicationController
   end
 
   def new
-    @person = current_user.persons.build
+    @person = Person.new
   end
 
   def create
-    @person = current_user.persons.build(create_params)
-
-    authorize @person
+      @person = Person.new(params[:person].permit(:title, :text))
 
     if @person.save
       redirect_to @person

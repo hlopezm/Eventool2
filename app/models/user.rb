@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
   has_many :comments
   has_many :tasks
   has_many :invitations
+  has_many :persons
 
   def admin
   	has_role? :admin

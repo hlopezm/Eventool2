@@ -1,0 +1,68 @@
+<h1><%= Person.model_name.human(count: 2) %></h1>
+
+<% if @persons.empty? %>
+
+    <p>No persons found.</p>
+<% else %>
+<table>
+    <thead>
+    <tr>
+        <th>
+            <%= Person.human_attribute_name(:name) %>
+        </th>
+        <th>
+            <%= t 'title' %>
+        </th>
+        <th>
+            <%= t 'address' %>
+        </th>
+        <th>
+            <%= t 'phone' %>
+        </th>
+
+        <th>
+            <%= t 'email' %>
+        </th>
+
+        <th>
+            <%= t 'index_actions' %>
+        </th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <% @persons.each do |person| %>
+
+    <tr>
+        <td>
+            <%= link_to person.name, person_path(person) %>
+        </td>
+
+        <td>
+            <%= person.title %>
+        </td>
+
+        <td>
+            <%= person.address %>
+        </td>
+
+        <td>
+            <%= person.phone %>
+        </td>
+
+        <td>
+            <%= person.email %>
+        </td>
+
+        <td>
+           <%= link_to t('.edit'), edit_person_path(person) %><br>
+           <%= link_to "Delete", person_path(person), {method: :delete, class: 'small', confirm: 'Are you sure?'} %>
+        </td>
+   </tr>
+
+    <% end %>
+    </tbody>
+</table>
+<% end %>
+
+    <%= link_to t(".new_person"), new_person_path, class: 'small radius button' %>

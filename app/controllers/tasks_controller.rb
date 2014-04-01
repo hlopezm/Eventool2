@@ -17,11 +17,10 @@ class TasksController < ApplicationController
   end
 
   def new
-   @person = current_user.tasks.build
+   @task = current_user.tasks.build
   end
 
   def create
-
     @task = Task.new(create_params)
 
     if @task.save
@@ -51,8 +50,6 @@ class TasksController < ApplicationController
     @task.destroy
     redirect_to tasks_path, notice: "#{@task.name} was removed"
   end 
-
-
 
 
  private
