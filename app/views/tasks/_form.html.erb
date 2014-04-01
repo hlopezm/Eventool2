@@ -2,31 +2,33 @@
       <% @task.errors.full_messages.each do |msg| %>
       <p><%= msg %></p>
     <% end %>
+
     <div class="row">
-        <div class="large-8 columns">
-            <%= f.label :name %>
-            <%= f.text_field :title %>
-        </div>
+      <div class="large-8 columns">
+        <%= f.label :title %>
+        <%= f.text_field :title %>
+      </div>
     </div>
 
     <div class="row">
-        <div class="large-8 columns">
-            <%= f.label :description %>
-            <%= f.text_field  :description %>
-        </div>
+      <div class="large-8 columns">
+        <%= f.label :description %>
+        <%= f.text_area :description %>
+      </div>
     </div>
 
     <div class="row">
-        <div class="large-8 columns">
-            <%= f.label :Event %>
-            <%= f.text_field :event_id %>
-        </div>
+      <div class="large-8 columns">
+         <%= f.label :event_id %>
+         <%= f.text_field :event_id %>
+      </div>
     </div>
+
     <div class="row">
-        <div class="large-8 columns">
-            <%= f.label :User %>
-            <%= f.text_field :user_id %>
-        </div>
+      <div class="large-8 columns">
+         <%= f.label :User %>
+         <%= f.collection_select :user_id, User.all, :id, :email %>
+      </div>
     </div>
 
     <%= f.submit t('.save'), class: 'round button' %>

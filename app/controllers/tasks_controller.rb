@@ -1,43 +1,58 @@
 class TasksController < ApplicationController
 
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+  before_action :set_task, only: [:edit, :update, :destroy]
+
   def index
-    @incomplete_tasks = Task.find(:all, :conditions => "finish IS NULL")
-    @complete_tasks = Task.find(:all, :conditions => "finish IS NOT NULL")
     @tasks = Task.all
+
+    respond_to do |format|
+      format.html
+      format.json
+    end
   end
 
   def show
   	@task = Task.find(params[:id])
   end
 
+  def new
+        @task = Task.new
+  end
+
+  def create
+
+    @task = Task.new(create_params)
+
+    if @task.save
+      redirect_to @task
+    else
+      render :new
+    end
+  end
+
   def edit
-  	@task = Task.find(params[:id])
+    authorize @task
   end
 
   def update
-    @task = Task.find params[:id]
+    authorize @task
 
      if @task.update  update_params
-        redirect_to @task, notice: "#{@task.name} updated"
+        redirect_to @task, notice: "#{@task.title} updated"
      else
         render 'edit'
      end
     end
 
-     def new
-        @task = Task.new
-      end
+  def destroy
+    authorize @task
 
-    def create
+    @task.destroy
+    redirect_to tasks_path, notice: "#{@task.name} was removed"
+  end 
 
-      @task = Task.find params[:id] task_params
 
-      if @task.save
-      redirect_to @task
-      else
-      render :new
-      end
-     end
 
 
  private
@@ -46,13 +61,12 @@ class TasksController < ApplicationController
       @task = Task.find params[:id]
     end
 
-  def task_params
-    params.require(:task).permit(:admin)
+  def create_params
+    params.require(:task).permit(*policy(Task).new_permitted_attrs)
   end
 
   def update_params
-      params.require(:task).permit(:admin)
+    params.require(:task).permit(*policy(@task).edit_permitted_attrs)
   end
-
 
 end
