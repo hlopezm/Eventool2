@@ -49,11 +49,11 @@
         </td>
 
         <td>
-            <%= invitation.send_at %>
+
         </td>
 
         <td>
-            <%= invitation.received_at %>
+
         </td>
         <td>
             <%= invitation.attend %>
@@ -70,4 +70,5 @@
 </table>
 <% end %>
 
+    <%= link_to t(".new_invitation"), new_invitation_path, class: 'small radius button' %>
 

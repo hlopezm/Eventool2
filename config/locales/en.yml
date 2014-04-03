@@ -47,3 +47,10 @@ en:
       date_header: Dates
     form:
       save: 'Submit'
+  invitations:
+    new:
+      header: 'New person'
+    index:
+      date_header: Dates
+    form:
+      save: 'Submit'

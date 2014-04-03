@@ -4,7 +4,11 @@ class PersonsController < ApplicationController
   before_action :set_person, only: [:edit, :update, :destroy]
 
   def index
-    @persons = Person.all
+    if params[:event_id].present?
+      @persons = Event.find(params[:event_id]).persons
+    else
+      @persons = Person.all
+    end
 
     respond_to do |format|
       format.html

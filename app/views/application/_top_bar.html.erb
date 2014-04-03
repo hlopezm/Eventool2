@@ -12,20 +12,25 @@
             <li class="divider"></li>
             <li class="<%= current_page?(events_path) ? "active" : "" %>">
                 <%= link_to Event.model_name.human(count: 2), events_path %>
-            </li>
+                </li>
+
             <li class="divider"></li>
+
+            <li>
+            <%= link_to Invitation.model_name.human(count: 2), invitations_path %>
+            </li>
+
+            <li class="divider"></li>
+
+            <li>
+                <%= link_to Person.model_name.human(count: 2), persons_path %>
+            </li>
+
+            <li class="divider"></li>
+
             <li>
                 <%= link_to Task.model_name.human(count: 2), tasks_path %>
             </li>
-            <li class="divider"></li>
-
-
-            <li class="divider"></li>
-
-            <li>
-            <%= link_to Person.model_name.human(count: 2), persons_path %>
-            </li>
-
 
             <li class="divider"></li>
         </ul>

@@ -8,7 +8,6 @@ class CreatePeople < ActiveRecord::Migration
       t.string :email
 
       t.timestamps
-      t.references :event
       t.references :user
       t.references :invitation
     end
