@@ -8,29 +8,24 @@
     <thead>
     <tr>
         <th>
-            <%= Invitation.human_attribute_name(:sender) %>
+            <%= Person.human_attribute_name(:name) %>
+        </th>
+        <th>
+            <%= t 'title' %>
+        </th>
+        <th>
+            <%= t 'category' %>
+        </th>
+        <th>
+            <%= t 'Delivered at' %>
         </th>
 
         <th>
-            <%= t 'invitado' %>
+            <%= t 'Received at' %>
         </th>
-
         <th>
-            <%= t 'status' %>
+            <%= t 'Invite ' %>
         </th>
-
-        <th>
-            <%= t 'user' %>
-        </th>
-
-        <th>
-            <%= t 'fecha de envio' %>
-        </th>
-
-        <th>
-            <%= t 'fecha de entrega' %>
-        </th>
-
         <th>
             <%= t 'index_actions' %>
         </th>
@@ -38,39 +33,41 @@
     </thead>
 
     <tbody>
-    <% @invitations.each do |invitation| %>
+    <% @persons.each do |person| %>
 
     <tr>
         <td>
-            <%= link_to invitation.user.email, invitation_path(invitation) %>
+            <%= link_to person.name, person_path(person) %>
         </td>
 
         <td>
-          <%=  %>
+            <%= person.title %>
         </td>
 
         <td>
-             <%= invitation.sender%>
+            <%= event.person.category %>
         </td>
 
         <td>
-          <%= invitation.receiver%>
+            <%= invitation.send_at %>
         </td>
 
         <td>
-          <%= invitation.user_id %>
+            <%= invitation.received_at %>
+        </td>
+        <td>
+            <%= invitation.attend %>
         </td>
 
         <td>
-         <%= invitation.delivered_at%>
+           <%= link_to t('.edit'), edit_person_path(person) %><br>
+           <%= link_to "Delete", person_path(person), {method: :delete, class: 'small', confirm: 'Are you sure?'} %>
         </td>
-        <td>
-          <%= invitation.confirmed_at%>
-        </td>
+   </tr>
 
-    </td>
     <% end %>
     </tbody>
 </table>
 <% end %>
+
 

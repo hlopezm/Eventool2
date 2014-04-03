@@ -21,7 +21,7 @@ class PersonsController < ApplicationController
   end
 
   def create
-      @person = Person.new(params[:person].permit(:title, :text))
+      @person = Person.new(params[:person].permit(:name, :title))
 
     if @person.save
       redirect_to @person
@@ -31,13 +31,13 @@ class PersonsController < ApplicationController
   end
 
   def edit
-    authorize @person
+  @person = Person.find(params[:id])
   end
 
   def update
-    authorize @person
+  @person = Person.update(params[:person].permit(:name, :title))
 
-    if @person.update update_params
+  	if @person.update update_params
       redirect_to @person, notice: "#{@person.name} updated"
     else
       render 'edit'

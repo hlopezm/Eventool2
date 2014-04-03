@@ -54,6 +54,8 @@
             <%= person.email %>
         </td>
 
+
+
         <td>
            <%= link_to t('.edit'), edit_person_path(person) %><br>
            <%= link_to "Delete", person_path(person), {method: :delete, class: 'small', confirm: 'Are you sure?'} %>
