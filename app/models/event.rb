@@ -3,6 +3,7 @@ class Event < ActiveRecord::Base
   has_many :comments
   has_many :tasks
   has_many :invitations
+  has_many :persons, through: :invitations
 
   validates :name, presence: true, length: { maximum: 60 }
 

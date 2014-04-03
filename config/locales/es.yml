@@ -33,3 +33,10 @@ es:
       date_header: Fechas
     form:
       save: 'Enviar'
+  tasks:
+    new:
+      header: 'New task'
+    index:
+      date_header: Dates
+    form:
+      save: 'Submit'

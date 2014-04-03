@@ -33,3 +33,17 @@ en:
       date_header: Dates
     form:
       save: 'Submit'
+  tasks:
+    new:
+      header: 'New task'
+    index:
+      date_header: Dates
+    form:
+      save: 'Submit'
+  persons:
+    new:
+      header: 'New person'
+    index:
+      date_header: Dates
+    form:
+      save: 'Submit'

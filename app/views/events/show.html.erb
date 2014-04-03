@@ -11,6 +11,7 @@
     -
     <%= l @event.end_at, format: :short %>
 </p>
+
 <ul><% @event.tasks.each do |task| %>
   <li>
     <strong><%= task.title %> </strong><br />

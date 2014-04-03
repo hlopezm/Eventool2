@@ -14,6 +14,12 @@
             <%= t '.date_header' %>
         </th>
         <th>
+            <%= t 'Tasks' %>
+        </th>
+        <th>
+            <%= t 'Guests' %>
+        </th>
+        <th>
             <%= t 'index_actions' %>
         </th>
     </tr>
@@ -26,11 +32,16 @@
         <td>
             <%= link_to event.name, event_path(event) %>
         </td>
-
         <td>
-            <%= l event.start_at, format: :short %>
-            -
-            <%= l event.end_at, format: :short %>
+          <%= l event.start_at, format: :short %>
+          -
+          <%= l event.end_at, format: :short %>
+        </td>
+        <td>
+            <%= link_to 'Tasks', tasks_path %>
+        </td>
+        <td>
+            <%= link_to 'Persons', persons_path %>
         </td>
         <td>
 

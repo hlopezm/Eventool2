@@ -1,0 +1,49 @@
+    <%= form_for @person, url: @url do |f| %>
+    <% @person.errors.full_messages.each do |msg| %>
+      <p><%= msg %></p>
+    <% end %>
+
+    <div class="row">
+        <div class="large-8 columns">
+            <%= f.label :name %>
+            <%= f.text_field :name %>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="large-8 columns">
+            <%= f.label :title %>
+            <%= f.text_area  :title %>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="large-8 columns">
+            <%= f.label :address %>
+            <%= f.text_area  :address %>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="large-8 columns">
+            <%= f.label :phone %>
+            <%= f.text_area  :phone %>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="large-8 columns">
+            <%= f.label :email %>
+            <%= f.text_area  :email %>
+        </div>
+    </div>
+
+    <div class="row">
+      <div class="large-8 columns">
+         <%= f.label :Event %>
+         <%= f.collection_select :event_id, Event.all, :id, :name %>
+      </div>
+    </div>
+
+    <%= f.submit t('.save'), class: 'round button' %>
+<% end %>

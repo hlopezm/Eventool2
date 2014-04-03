@@ -1,8 +1,5 @@
 Ironevents::Application.routes.draw do
 
-  get "guests/index"
-  get "guests/show"
-  get "guests/new"
   get "comments/create"
   devise_for :users
 
@@ -21,7 +18,8 @@ Ironevents::Application.routes.draw do
 
   resources :tasks
   resources :invitations
-  resources :guests
+  resources :persons
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

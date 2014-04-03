@@ -1,8 +1,8 @@
-<h1><%= Invitation.model_name.human(count: 2) %></h1>
+<h1><%= Person.model_name.human(count: 2) %></h1>
 
-<% if @invitations.empty? %>
+<% if @persons.empty? %>
 
-    <p>No invitations found.</p>
+    <p>No persons found.</p>
 <% else %>
 <table>
     <thead>
@@ -14,18 +14,16 @@
             <%= t 'title' %>
         </th>
         <th>
-            <%= t 'category' %>
+            <%= t 'address' %>
         </th>
         <th>
-            <%= t 'Delivered at' %>
+            <%= t 'phone' %>
         </th>
 
         <th>
-            <%= t 'Received at' %>
+            <%= t 'email' %>
         </th>
-        <th>
-            <%= t 'Invite ' %>
-        </th>
+
         <th>
             <%= t 'index_actions' %>
         </th>
@@ -45,19 +43,18 @@
         </td>
 
         <td>
-            <%= event.person.category %>
+            <%= person.address %>
         </td>
 
         <td>
-            <%= invitation.send_at %>
+            <%= person.phone %>
         </td>
 
         <td>
-            <%= invitation.received_at %>
+            <%= person.email %>
         </td>
-        <td>
-            <%= invitation.attend %>
-        </td>
+
+
 
         <td>
            <%= link_to t('.edit'), edit_person_path(person) %><br>
@@ -70,4 +67,4 @@
 </table>
 <% end %>
 
-
+    <%= link_to t(".new_person"), new_person_path, class: 'small radius button' %>
