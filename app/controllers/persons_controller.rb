@@ -18,10 +18,11 @@ class PersonsController < ApplicationController
 
   def new
     @person = Person.new
+    @url = persons_path
   end
 
   def create
-      @person = Person.new(params[:person].permit(:name, :title))
+      @person = Person.new(create_params)
 
     if @person.save
       redirect_to @person
@@ -32,13 +33,14 @@ class PersonsController < ApplicationController
 
   def edit
   @person = Person.find(params[:id])
+  @url = person_path(@person)
   end
 
   def update
-  @person = Person.update(params[:person].permit(:name, :title))
-
+    @person= Person.find(params[:id])
+   
   	if @person.update update_params
-      redirect_to @person, notice: "#{@person.name} updated"
+      redirect_to person_path, notice: "#{@person.name} updated"
     else
       render 'edit'
     end
@@ -63,7 +65,7 @@ class PersonsController < ApplicationController
   end
 
   def update_params
-    params.require(:person).permit(*policy(@person).edit_permitted_attrs)
+    params.require(:person).permit(*policy(Person).edit_permitted_attrs)
   end
 end
 

@@ -52,7 +52,7 @@ ActiveRecord::Schema.define(version: 20140401135652) do
     t.datetime "updated_at"
     t.integer  "event_id"
     t.integer  "user_id"
-    t.integer  "guest_id"
+    t.integer  "person_id"
   end
 
   create_table "people", force: true do |t|
@@ -63,6 +63,9 @@ ActiveRecord::Schema.define(version: 20140401135652) do
     t.string   "email"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "event_id"
+    t.integer  "user_id"
+    t.integer  "invitation_id"
   end
 
   create_table "roles", force: true do |t|
