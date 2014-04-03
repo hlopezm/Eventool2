@@ -33,19 +33,19 @@
     </thead>
 
     <tbody>
-    <% @persons.each do |person| %>
+    <% @invitations.each do |invitation| %>
 
     <tr>
         <td>
-            <%= link_to person.name, person_path(person) %>
+            <%= link_to invitation.person.name, person_path(invitation.person) %>
         </td>
 
         <td>
-            <%= person.title %>
+            <%= invitation.person.name %>
         </td>
 
         <td>
-            <%= event.person.category %>
+            <%= invitation.person.title %>
         </td>
 
         <td>
@@ -60,8 +60,8 @@
         </td>
 
         <td>
-           <%= link_to t('.edit'), edit_person_path(person) %><br>
-           <%= link_to "Delete", person_path(person), {method: :delete, class: 'small', confirm: 'Are you sure?'} %>
+           <%= link_to t('.edit'), edit_person_path(invitation.person) %><br>
+           <%= link_to "Delete", person_path(invitation.person), {method: :delete, class: 'small', confirm: 'Are you sure?'} %>
         </td>
    </tr>
 

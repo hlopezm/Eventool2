@@ -21,6 +21,15 @@
     <% end %>
 </ul>
 
+<ul><% @event.persons.each do |person| %>
+  <li>
+    <strong><%= person.name %> </strong><br />
+    <%= person.title %><br />
+    Asiste?:<%= person.invitation.attend %>
+  </li>
+    <% end %>
+</ul>
+
 <h2><%= Comment.model_name.human count: 2 %></h2>
 
 <%= render partial: 'comment_form', locals: {event: @event} %>

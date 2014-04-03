@@ -6,11 +6,8 @@ class Event < ActiveRecord::Base
   has_many :persons, through: :invitations
 
   validates :name, presence: true, length: { maximum: 60 }
-
   validates_length_of :description, minimum: 10, allow_blank: true
-
   validates :user, presence: true
-
   validates :start_at, presence: true
   validates :end_at, presence: true
 
