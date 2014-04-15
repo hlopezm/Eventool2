@@ -36,18 +36,8 @@ ActiveRecord::Schema.define(version: 20140401135652) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
-  end
-
-  add_index "events", ["user_id"], name: "index_events_on_user_id", using: :btree
-
-  create_table "guests", force: true do |t|
-    t.string   "name"
-    t.string   "cargo"
-    t.string   "address"
-    t.string   "phone"
-    t.string   "email"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.integer  "invitations_id"
+    t.integer  "guest_id"
   end
 
   create_table "invitations", force: true do |t|
@@ -73,7 +63,6 @@ ActiveRecord::Schema.define(version: 20140401135652) do
     t.string   "email"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "event_id"
     t.integer  "user_id"
     t.integer  "invitation_id"
   end
