@@ -32,19 +32,22 @@
         <td>
             <%= link_to event.name, event_path(event) %>
         </td>
+
         <td>
           <%= l event.start_at, format: :short %>
           -
           <%= l event.end_at, format: :short %>
         </td>
+
         <td>
-            <%= link_to 'Tasks', tasks_path %>
+            <%= link_to 'Tasks', tasks_path(:event_id => event.id) %>        </td>
         </td>
+
         <td>
             <%= link_to 'Persons', persons_path(:event_id => event.id) %>
         </td>
-        <td>
 
+        <td>
             <% if policy(event).edit? %>
                 <%= link_to t('.edit'), edit_event_path(event) %><br>
             <% end %>

@@ -3,6 +3,10 @@
       <p><%= msg %></p>
     <% end %>
 
+<form>
+  <fieldset>
+    <legend>Add Person at Event</legend>
+
     <div class="row">
       <div class="large-8 columns">
          <%= f.label :Event %>
@@ -16,6 +20,10 @@
          <%= f.collection_select :event_id, Event.all, :id, :name %>
       </div>
     </div>
+
+  </fieldset>
+</form>
+
 
     <%= f.submit t('.save'), class: 'round button' %>
 

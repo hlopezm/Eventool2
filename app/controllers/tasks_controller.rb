@@ -4,7 +4,11 @@ class TasksController < ApplicationController
   before_action :set_task, only: [:edit, :update, :destroy]
 
   def index
-    @tasks = Task.all
+    if params[:event_id].present?
+      @tasks = Event.find(params[:event_id]).tasks
+    else
+      @tasks = Task.all
+    end
 
     respond_to do |format|
       format.html
