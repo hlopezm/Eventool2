@@ -18,7 +18,9 @@ Ironevents::Application.routes.draw do
 
   resources :tasks
   resources :invitations
-  resources :persons
+  resources :people
+
+  get 'people_list' => 'people#list'
 
 
   # The priority is based upon order of creation: first created -> highest priority.

@@ -1,19 +1,13 @@
-class PersonsController < ApplicationController
+class PeopleController < ApplicationController
 
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   before_action :set_person, only: [:edit, :update, :destroy]
 
   def index
-    if params[:event_id].present?
-      @persons = Event.find(params[:event_id]).persons
-    else
-      @persons = Person.all
-    end
+  end
 
-    respond_to do |format|
-      format.html
-      format.json
-    end
+  def list
+    render :json => Person.all
   end
 
   def show
@@ -22,7 +16,7 @@ class PersonsController < ApplicationController
 
   def new
     @person = Person.new
-    @url = persons_path
+    @url = people_path
   end
 
   def create

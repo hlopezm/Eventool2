@@ -29,6 +29,8 @@ gem 'bcrypt'
 gem "pundit"
 
 gem 'jquery-ui-rails'
+gem 'jquery-ui-themes'
+gem 'jqgrid-jquery-rails', '~> 4.5.201'
 
 gem 'pg'
 
