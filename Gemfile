@@ -53,7 +53,6 @@ group :production do
   gem 'rails_12factor'
 end
 
-gem 'foundation-rails'
 gem 'rolify'
 
 # Use ActiveModel has_secure_password

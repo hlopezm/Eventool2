@@ -12,11 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require foundation
-//= require foundation/foundation.reveal
 //= require jquery.ui.all 
 //= require jqgrid-jquery-rails
 //= require comments
 //= require_tree .
-
-$(function(){ $(document).foundation(); });
