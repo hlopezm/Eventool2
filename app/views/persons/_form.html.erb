@@ -38,12 +38,5 @@
         </div>
     </div>
 
-    <div class="row">
-      <div class="large-8 columns">
-         <%= f.label :Event %>
-         <%= f.collection_select :event_id, Event.all, :id, :name %>
-      </div>
-    </div>
-
     <%= f.submit t('.save'), class: 'round button' %>
 <% end %>
