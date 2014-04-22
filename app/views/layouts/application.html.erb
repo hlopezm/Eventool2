@@ -12,8 +12,25 @@
 
   <body>
 
-    <%= render partial: 'top_bar' %>
+  <div id="layout">
+    <div id="menu">
+      <div class="pure-menu pure-menu-open">
+        <a class="pure-menu-heading" href="">EvenTool</a>
+        <ul>
+          <li class=""><a href="">Eventos</a></li>
+          <li class=""><a href="">Personas</a></li>
+          <li class=""><a href="">Invitaciones</a></li>
+        </ul>
+      </div>
+    </div>
 
+    <div id="main">
+
+      <%= yield %> 
+    
+    </div>
+  </div>
+    
     <%= javascript_include_tag "application" %>
   </body>
 </html>
