@@ -7,7 +7,7 @@ $("#people").jqGrid({
   datatype: "json",
   colNames: ["Nombre", "Titulo", "Dirección", "Telefono", "Email"],
   colModel: [
-    {name: "name", width: 200},
+    {name: "name"},
     {name: "title"},
     {name: "address"},
     {name: "phone"},

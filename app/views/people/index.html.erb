@@ -1,6 +1,19 @@
-<h1><%= Person.model_name.human(count: 2) %></h1>
+<div class="header">
+  <h1><%= Person.model_name.human(count: 2) %></h1>
+</div>
 
-<div id="toolbar_search"></div>
-<table id="people"></table>
+<div class="content">
 
-<%= link_to t(".new_person"), new_person_path, class: 'small radius button' %>
+  <section id="data">
+    <div id="toolbar_search"></div>
+    <table id="people"></table>
+  </section>
+
+  <section class="options">
+    <%= link_to t(".new_person"), new_person_path, class: 'pure-button pure-button-primary' %>
+  </section>
+
+</div>
+
+<div class="footer">
+</div>
