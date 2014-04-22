@@ -14,41 +14,6 @@
 
     <%= render partial: 'top_bar' %>
 
-    <% if flash[:alert] %>
-      <div class="alert-box radius" data-alert>
-          <%= flash[:alert] %>
-          <a class="close" href>x</a>
-      </div>
-    <% end %>
-
-    <% if flash[:notice] %>
-      <div class="alert-box success radius" data-alert>
-          <%= flash[:notice] %>
-          <a class="close" href>x</a>
-      </div>
-    <% end %>
-
-    <div class="content row">
-        <div class="small-9 columns right">
-            <%= yield %>
-        </div>
-
-        <div class="sidebar ">
-            <ul class="Radius Secondary Label">
-                <li>
-                    <%= link_to "Events today", today_events_path %>
-                </li>
-                <li>
-                    <%= link_to "Events next week", next_week_events_path %>
-                </li>
-                <% if current_user %>
-                    <li>
-                        <%= link_to "My events", my_events_path %>
-                    </li>
-                <% end %>
-            </ul>
-        </div>
-    </div>
     <%= javascript_include_tag "application" %>
   </body>
 </html>

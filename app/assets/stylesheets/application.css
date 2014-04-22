@@ -9,15 +9,8 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
+ *= require pure
  *= require jqgrid-jquery-rails
  *= require jquery-ui/cupertino
  *= require_tree .
  */
-
-.content.row {
-    margin-top: 20px;
-}
-
-.content.row .sidebar {
-    padding-top: 20px;
-}
