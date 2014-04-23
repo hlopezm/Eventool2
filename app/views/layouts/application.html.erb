@@ -11,6 +11,20 @@
   </head>
 
   <body>
+    <% if flash[:alert] %>
+      <div class="alert-box radius" data-alert>
+          <%= flash[:alert] %>
+          <a class="close" href>x</a>
+      </div>
+    <% end %>
+
+    <% if flash[:notice] %>
+      <div class="alert-box success radius" data-alert>
+          <%= flash[:notice] %>
+          <a class="close" href>x</a>
+      </div>
+    <% end %>
+
 
   <div id="layout">
     <a href="#menu" id="menuLink" class="menu-link"><span></span></a>
@@ -18,20 +32,48 @@
       <div class="pure-menu pure-menu-open">
         <a class="pure-menu-heading" href="">EvenTool</a>
         <ul>
-          <li class=""><a href="">Eventos</a></li>
-          <li class=""><a href="">Personas</a></li>
-          <li class=""><a href="">Invitaciones</a></li>
+            <li class="divider"></li>
+            <li class="<%= current_page?(events_path) ? "active" : "" %>">
+                <%= link_to Event.model_name.human(count: 2), events_path %>
+                </li>
+
+            <li class="divider"></li>
+
+            <li>
+            <%= link_to Invitation.model_name.human(count: 2), invitations_path %>
+            </li>
+
+            <li class="divider"></li>
+
+            <li>
+                <%= link_to Person.model_name.human(count: 2), people_path %>
+            </li>
+
+            <li class="divider"></li>
+
+            <li>
+                <%= link_to Task.model_name.human(count: 2), tasks_path %>
+            </li>
+
+            <li class="divider"></li>
         </ul>
       </div>
-    </div>
+    <% if current_user %>
+       <li><%= link_to "Log out", destroy_user_session_path, method: :delete %></li>
+    <% else %>
+       <li><%= link_to "Log in", new_user_session_path %></li>
+       <li><%= link_to "Sign up", new_user_registration_path %></li>
+    <% end %>
+</div>
+
 
     <div id="main">
 
-      <%= yield %> 
-    
+      <%= yield %>
+
     </div>
   </div>
-    
+
     <%= javascript_include_tag "application" %>
   </body>
 </html>

@@ -18,7 +18,7 @@ class Event < ActiveRecord::Base
   scope :next_week, ->() {
     start = Date.today.next_week
     last = start.end_of_week
-    
+
     where("DATE(start_at) <= ? AND DATE(end_at) >= ?", last, start)
   }
 

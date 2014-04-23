@@ -12,7 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require jquery.ui.all 
+//= require jquery.ui.all
 //= require jqgrid-jquery-rails
 //= require comments
 //= require_tree .
