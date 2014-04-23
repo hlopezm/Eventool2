@@ -3,22 +3,19 @@
  * listed below.
  *
  * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
- * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ * or vendor/assets/stylesheets of plugins, #menu any, can be referenced here using a relative path.
  *
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
+ *= require pure
+ *= require layout/baby-blue
  *= require_self
- *= require foundation_and_overrides
  *= require jqgrid-jquery-rails
  *= require jquery-ui/cupertino
  *= require_tree .
  */
 
-.content.row {
-    margin-top: 20px;
-}
-
-.content.row .sidebar {
-    padding-top: 20px;
+#data {
+  margin-bottom: 10px;
 }
