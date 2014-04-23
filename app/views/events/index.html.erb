@@ -1,67 +1,19 @@
-<h1><%= Event.model_name.human(count: 2) %></h1>
+<div class="header">
+  <h1><%= Event.model_name.human(count: 2) %></h1>
+</div>
 
-<% if @events.empty? %>
+<div class="content">
 
-    <p>No events found.</p>
-<% else %>
-<table>
-    <thead>
-    <tr>
-        <th>
-            <%= Event.human_attribute_name(:name) %>
-        </th>
-        <th>
-            <%= t '.date_header' %>
-        </th>
-        <th>
-            <%= t 'Tasks' %>
-        </th>
-        <th>
-            <%= t 'Guests' %>
-        </th>
-        <th>
-            <%= t 'index_actions' %>
-        </th>
-    </tr>
-    </thead>
+  <section id="data">
+    <div id="toolbar_search"></div>
+    <table id="events"></table>
+  </section>
 
-    <tbody>
-    <% @events.each do |event| %>
+  <section class="options">
+  <% if policy(Event).new? %>
+    <%= link_to t(".new_event"), new_event_path, class: 'pure-button pure-button-primary' %>
+  <% end %>
+  </section>
 
-    <tr>
-        <td>
-            <%= link_to event.name, event_path(event) %>
-        </td>
+</div>
 
-        <td>
-          <%= l event.start_at, format: :short %>
-          -
-          <%= l event.end_at, format: :short %>
-        </td>
-
-        <td>
-            <%= link_to 'Tasks', tasks_path(:event_id => event.id) %>        </td>
-        </td>
-
-        <td>
-            <%= link_to 'Persons', people_path(:event_id => event.id) %>
-        </td>
-
-        <td>
-            <% if policy(event).edit? %>
-                <%= link_to t('.edit'), edit_event_path(event) %><br>
-            <% end %>
-            <% if policy(event).destroy? %>
-                <%= link_to "Delete", event_path(event), {method: :delete, class: 'small', confirm: 'Are you sure?'} %>
-            <% end %>
-        </td>
-    </tr>
-
-    <% end %>
-    </tbody>
-</table>
-<% end %>
-
-<% if policy(Event).new? %>
-    <%= link_to t(".new_event"), new_event_path, class: 'small radius button' %>
-<% end %>
