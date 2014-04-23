@@ -1,8 +1,18 @@
-link_guests =(cellValue, options, rowObject, action)->
-  "<a href='#'>Invitados</a>"
+window.people_window = ->
+  $("#people_dialog").dialog
+    title: "Invitados"
+    modal: true
 
-link_tasks =(cellValue, options, rowObject, action)->
-  "<a href='#'>Tareas</a>"
+window.tasks_window = ->
+  $("#tasks_dialog").dialog
+    title: "Tareas"
+    modal: true
+
+link_guests = (cellValue, options, rowObject, action) ->
+  "<a href='javascript:people_window()'>Invitados</a>"
+
+link_tasks = (cellValue, options, rowObject, action) ->
+  "<a href='javascript:tasks_window()'>Tareas</a>"
 
 grid_events = $("#events").jqGrid({
   url: "events_list",
@@ -20,8 +30,6 @@ grid_events = $("#events").jqGrid({
   hoverrows: false,
   pager: "toolbar_search"
 })
-
-
 
 grid_events.jqGrid('navGrid','#toolbar_search',{del:false,add:false,edit:false,search:false})
 grid_events.jqGrid('filterToolbar',{stringResult: true,searchOnEnter : false})
