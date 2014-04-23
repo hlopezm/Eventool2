@@ -1,5 +1,5 @@
 <div class="header">
-  <h1><%= Event.model_name.human(count: 2) %></h1>
+  <h1>Eventos</h1>
 </div>
 
 <div class="content">
@@ -11,7 +11,7 @@
 
   <section class="options">
   <% if policy(Event).new? %>
-    <%= link_to t(".new_event"), new_event_path, class: 'pure-button pure-button-primary' %>
+    <%= link_to "Nuevo Evento", new_event_path, class: 'pure-button pure-button-primary' %>
   <% end %>
   </section>
 
@@ -20,6 +20,7 @@
 <div id="people_dialog">
   <div id="people_toolbar_search"></div>
   <table id="people"></table>
+  <button id="invite" class="pure-button pure-button-primary">Invitar</button>
 </div>
 
 <div id="tasks_dialog"></div>

@@ -13,7 +13,6 @@
  *= require_self
  *= require jqgrid-jquery-rails
  *= require jquery-ui/cupertino
- *= require_tree .
  */
 
 #data {
