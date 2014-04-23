@@ -65,7 +65,6 @@
       <% end %>
     </div>
 
-
     <div id="main">
 
       <%= yield %>
@@ -77,5 +76,8 @@
   </div>
 
   <%= javascript_include_tag "application" %>
+  <%= javascript_include_tag params[:controller] if Rails.application.assets.find_asset("#{params[:controller]}.js") %>
+  <%= javascript_include_tag "#{params[:controller]}_#{params[:action]}"  if Rails.application.assets.find_asset("#{params[:controller]}_#{params[:action]}.js") %>
+  
   </body>
 </html>

@@ -1,7 +1,32 @@
 window.people_window = ->
   $("#people_dialog").dialog
-    title: "Invitados"
-    modal: true
+    title: "Invitados",
+    modal: true,
+    open: -> grid_people(),
+    width: 830,
+    position: "center"
+
+window.grid_people = ->
+  $("#people").jqGrid
+    url: "people_list",
+    datatype: "json",
+    colNames: ["Nombre", "Titulo", "Dirección", "Telefono", "Email"],
+    colModel: [
+      {name: "name"},
+      {name: "title"},
+      {name: "address"},
+      {name: "phone"},
+      {name: "email"}
+    ],
+    ignoreCase: true,
+    multiselect: true,
+    loadonce: true,
+    rownumbers: true,
+    pager: "toolbar_search"
+
+  $("#people").jqGrid('navGrid','#people_toolbar_search',{del:false,add:false,edit:false,search:false})
+  $("#people").jqGrid('filterToolbar',{stringResult: true,searchOnEnter : false})
+
 
 window.tasks_window = ->
   $("#tasks_dialog").dialog
@@ -28,7 +53,8 @@ grid_events = $("#events").jqGrid
   loadonce: true,
   rownumbers: true,
   hoverrows: false,
+  ignoreCase: true,
   pager: "toolbar_search"
 
-grid_events.jqGrid('navGrid','#toolbar_search',{del:false,add:false,edit:false,search:false})
+grid_events.jqGrid('navGrid','#toolbar_search',{del:true,add:true,edit:true,search:false})
 grid_events.jqGrid('filterToolbar',{stringResult: true,searchOnEnter : false})
