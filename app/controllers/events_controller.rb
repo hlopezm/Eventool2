@@ -15,7 +15,6 @@ class EventsController < ApplicationController
     new_ids = params[:people_ids].collect{|i| i.to_i} - event.people.map(&:id)
     people_new = Person.where(:id => new_ids)
     event.people.append(people_new)
-    event.save
     render :text => "ok"
   end
 
