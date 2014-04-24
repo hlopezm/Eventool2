@@ -12,6 +12,11 @@ class InvitationsController < ApplicationController
     end
   end
 
+  def list
+    event = Event.find(params[:event_id])
+    render :json => event.people
+  end
+
   def show
     @invitation = Invitation.find(params[:id])
   end
@@ -32,8 +37,8 @@ class InvitationsController < ApplicationController
   end
 
   def edit
-  @invitation = Invitation.find(params[:id])
-  irvitation_path(@invitation)
+    @invitation = Invitation.find(params[:id])
+    irvitation_path(@invitation)
   end
 
   def update

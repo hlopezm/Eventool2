@@ -22,7 +22,7 @@ Ironevents::Application.routes.draw do
 
   get 'people_list' => 'people#list'
   get 'events_list' => 'events#list'
-
+  get 'invitations_list' => 'invitations#list'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

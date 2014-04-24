@@ -1,15 +1,48 @@
-window.people_window = ->
-  $("#people_dialog").dialog
+window.invitations_window = (event_id) ->
+  $("#invitations_dialog").dialog
     title: "Invitados",
     modal: true,
     open: ->
-      grid_people()
+      invitations_grid(event_id)
+      $("#search").css("display", "block")
+      $("#search").on("click", -> people_window())
+    width: 830,
+    height: 340,
+    position: "center"
+
+window.people_window = ->
+  $("#people_dialog").dialog
+    title: "Buscar Personas",
+    modal: true,
+    open: ->
+      people_grid()
       $("#invite").css("display", "block")
     width: 830,
     height: 340,
     position: "center"
 
-window.grid_people = ->
+window.invitations_grid = (event_id) ->
+  $("#invitations").jqGrid
+    url: "invitations_list",
+    postData: {event_id: event_id}
+    datatype: "json",
+    colNames: ["Nombre", "Titulo", "Dirección", "Telefono", "Email"],
+    colModel: [
+      {name: "name"},
+      {name: "title"},
+      {name: "address"},
+      {name: "phone"},
+      {name: "email"}
+    ],
+    ignoreCase: true,
+    loadonce: true,
+    rownumbers: true,
+    pager: "toolbar_search"
+
+  $("#invitations").jqGrid('navGrid','#invitations_toolbar_search',{del:false,add:false,edit:true,search:false})
+  $("#invitations").jqGrid('filterToolbar',{stringResult: true,searchOnEnter: false})
+
+window.people_grid = ->
   $("#people").jqGrid
     url: "people_list",
     datatype: "json",
@@ -21,8 +54,8 @@ window.grid_people = ->
       {name: "phone"},
       {name: "email"}
     ],
-    ignoreCase: true,
     multiselect: true,
+    ignoreCase: true,
     loadonce: true,
     rownumbers: true,
     pager: "toolbar_search"
@@ -36,7 +69,7 @@ window.tasks_window = ->
     modal: true
 
 link_guests = (cellValue, options, rowObject, action) ->
-  "<a href='javascript:people_window()'>Invitados</a>"
+  "<a href='javascript:invitations_window(" + rowObject.id + ")'>Invitados</a>"
 
 link_tasks = (cellValue, options, rowObject, action) ->
   "<a href='javascript:tasks_window()'>Tareas</a>"
