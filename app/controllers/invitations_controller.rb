@@ -53,7 +53,7 @@ class InvitationsController < ApplicationController
 
   def destroy
     #authorize @invitation
-    name = @invitation.name
+    name = @invitation.person.name
     @invitation.destroy
     redirect_to invitations_path, notice: "#{name} was removed"
   end
