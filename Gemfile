@@ -32,6 +32,8 @@ gem 'jqgrid-jquery-rails', '~> 4.5.201'
 
 gem 'pg'
 
+gem 'sass-rails', '~> 4.0.3'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false

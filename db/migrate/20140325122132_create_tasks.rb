@@ -7,6 +7,7 @@ class CreateTasks < ActiveRecord::Migration
       t.timestamps
       t.references :event
       t.references :user
+      t.references :person
     end
   end
 end

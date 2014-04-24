@@ -7,12 +7,7 @@ class TasksController < ApplicationController
     if params[:event_id].present?
       @tasks = Event.find(params[:event_id]).tasks
     else
-      @tasks = Task.all
-    end
-
-    respond_to do |format|
-      format.html
-      format.json
+      @tasks = Task.all.to_json(:include => :user)
     end
   end
 
