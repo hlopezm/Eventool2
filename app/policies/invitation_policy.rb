@@ -21,7 +21,8 @@ class InvitationPolicy < ApplicationPolicy
   end
 
   def destroy?
-    @user == @record.user
+    #@user == @record.user
+    true
   end
 
   def new_permitted_attrs
