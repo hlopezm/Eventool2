@@ -45,10 +45,10 @@ class PeopleController < ApplicationController
   end
 
   def destroy
-    authorize @person
+    #authorize @person
 
     @person.destroy
-    redirect_to persons_path, notice: "#{@person.name} was removed"
+    redirect_to people_path, notice: "#{@person.name} was removed"
   end
 
 

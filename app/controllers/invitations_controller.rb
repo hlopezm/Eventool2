@@ -1,6 +1,6 @@
 class InvitationsController < ApplicationController
 
-  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+  #before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   before_action :set_invitation, only: [:edit, :update, :destroy]
 
   def index
@@ -52,10 +52,10 @@ class InvitationsController < ApplicationController
   end
 
   def destroy
-    authorize @invitation
-
+    #authorize @invitation
+    name = @invitation.name
     @invitation.destroy
-    redirect_to invitations_path, notice: "#{@invitation.name} was removed"
+    redirect_to invitations_path, notice: "#{name} was removed"
   end
 
 
