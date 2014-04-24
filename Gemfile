@@ -29,7 +29,6 @@ gem "pundit"
 gem 'jquery-ui-rails'
 gem 'jquery-ui-themes'
 gem 'jqgrid-jquery-rails', '~> 4.5.201'
-
 gem 'pg'
 
 gem 'sass-rails', '~> 4.0.3'
@@ -51,6 +50,7 @@ end
 
 group :production do
   gem 'rails_12factor'
+#  gem 'pg', '~> 0.17.1'
 end
 
 gem 'rolify'
