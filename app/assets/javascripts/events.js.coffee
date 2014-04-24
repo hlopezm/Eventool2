@@ -9,6 +9,7 @@ window.invitations_window = (event_id) ->
     open: ->
       invitations_grid(event_id)
       $("#search").css("display", "block")
+      $("#search").unbind("click")
       $("#search").on("click", -> people_window(event_id))
     width: 830,
     height: 340,
@@ -24,6 +25,7 @@ window.people_window = (event_id) ->
     open: ->
       people_grid()
       $("#invite").css("display", "block")
+      $("#invite").unbind("click")
       $("#invite").on "click", ->
         $.ajax
           url: "invite_people"
