@@ -1,74 +1,21 @@
-<h1><%= Invitation.model_name.human(count: 2) %></h1>
+<div class="header">
+  <h1>EventId | Invitations</h1>
+</div>
 
-<% if @invitations.empty? %>
+<div class="content">
 
-    <p>No invitations found.</p>
-<% else %>
-<table>
-    <thead>
-    <tr>
-        <th>
-            <%= Person.human_attribute_name(:name) %>
-        </th>
-        <th>
-            <%= t 'title' %>
-        </th>
-        <th>
-            <%= t 'category' %>
-        </th>
-        <th>
-            <%= t 'Delivered at' %>
-        </th>
+  <section id="data">
+    <div id="toolbar_search"></div>
+    <table id="invitations"></table>
+  </section>
 
-        <th>
-            <%= t 'Received at' %>
-        </th>
-        <th>
-            <%= t 'Invite ' %>
-        </th>
-        <th>
-            <%= t 'index_actions' %>
-        </th>
-    </tr>
-    </thead>
+  <section class="options">
+  <% if policy(Invitation).new? %>
+    <%= link_to "Nueva Invitación", new_invitation_path, class: 'pure-button pure-button-primary' %>
+  <% end %>
+  </section>
 
-    <tbody>
-    <% @invitations.each do |invitation| %>
+</div>
 
-    <tr>
-        <td>
-            <%= link_to invitation.person.name, person_path(invitation.person) %>
-        </td>
 
-        <td>
-            <%= invitation.person.name %>
-        </td>
-
-        <td>
-            <%= invitation.person.title %>
-        </td>
-
-        <td>
-
-        </td>
-
-        <td>
-
-        </td>
-        <td>
-            <%= invitation.attend %>
-        </td>
-
-        <td>
-           <%= link_to t('.edit'), edit_invitation_path(invitation) %><br>
-           <%= link_to "Delete", invitation_path(invitation), {method: :delete, class: 'small', confirm: 'Are you sure?'} %>
-        </td>
-   </tr>
-
-    <% end %>
-    </tbody>
-</table>
-<% end %>
-
-    <%= link_to t(".new_invitation"), new_invitation_path, class: 'small radius button' %>
 

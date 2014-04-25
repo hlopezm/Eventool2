@@ -1,8 +1,10 @@
+destroy_grid = (id_grid) ->
+  $(id_grid).jqGrid("GridUnload")
 
 grid_tasks = $("#tasks").jqGrid
   url: "tasks_list",
   datatype: "json",
-  colNames: ["Nombre", "Inicio", "Asignado a", "Finalizado"],
+  colNames: ["Nombre", "Inicio", "Asignado_a", "Finalizado"],
   colModel: [
     {name: "title"},
     {name: "created_at"},

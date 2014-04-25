@@ -4,17 +4,10 @@ class InvitationsController < ApplicationController
   before_action :set_invitation, only: [:edit, :update, :destroy]
 
   def index
-    @invitations = Invitation.all
-
-    respond_to do |format|
-      format.html
-      format.json
-    end
   end
 
   def list
-    event = Event.find(params[:event_id])
-    render :json => event.people
+    render :json => Invitation.all
   end
 
   def show

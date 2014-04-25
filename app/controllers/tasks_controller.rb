@@ -4,11 +4,10 @@ class TasksController < ApplicationController
   before_action :set_task, only: [:edit, :update, :destroy]
 
   def index
-    if params[:event_id].present?
-      @tasks = Event.find(params[:event_id]).tasks
-    else
-      @tasks = Task.all.to_json(:include => :user)
-    end
+  end
+
+  def list
+    render :json => Task.all
   end
 
   def show
