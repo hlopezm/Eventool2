@@ -24,6 +24,7 @@ Ironevents::Application.routes.draw do
   get 'events_list' => 'events#list'
   get 'invitations_list' => 'invitations#list'
   get 'invite_people' => 'events#invite_people'
+  post 'invitations_operation' => 'invitations#operation'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

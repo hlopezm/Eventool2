@@ -45,20 +45,22 @@ window.invitations_grid = (event_id) ->
     url: "invitations_list",
     postData: {event_id: event_id}
     datatype: "json",
-    colNames: ["Nombre", "Titulo", "Dirección", "Telefono", "Email"],
+    colNames: ["Id", "Nombre", "Titulo", "Dirección", "Telefono", "Email"],
     colModel: [
-      {name: "name"},
-      {name: "title"},
-      {name: "address"},
-      {name: "phone"},
-      {name: "email"}
+      {name: "id", hidden:true}
+      {name: "person.name"},
+      {name: "person.title"},
+      {name: "person.address"},
+      {name: "person.phone"},
+      {name: "person.email"}
     ],
+    editurl: 'invitations_operation'
     ignoreCase: true,
     loadonce: true,
     rownumbers: true,
     pager: "#invitations_toolbar_search"
 
-  $("#invitations").jqGrid("navGrid", "#invitations_toolbar_search", {del:false,add:false,edit:true,search:false})
+  $("#invitations").jqGrid("navGrid", "#invitations_toolbar_search", {del:true,add:false,edit:false,search:false})
   $("#invitations").jqGrid("filterToolbar", {stringResult: true,searchOnEnter: false})
 
 window.people_grid = ->
@@ -91,7 +93,7 @@ link_guests = (cellValue, options, rowObject, action) ->
   "<a href='javascript:invitations_window(" + rowObject.id + ")'>Invitados</a>"
 
 link_tasks = (cellValue, options, rowObject, action) ->
-  "<a href='javascript:tasks_window()'>Tareas</a>"
+  "<a href='javascript:tasks_window(" + rowObject.id + ")'>Tareas</a>"
 
 grid_events = $("#events").jqGrid
   url: "events_list",
@@ -104,11 +106,12 @@ grid_events = $("#events").jqGrid
     {name: "tarks", align: "center", editable: true, formatter: link_tasks}
     {name: "guests", align: "center", editable: true, formatter: link_guests}
   ],
+  editurl: 'events_operation',
   loadonce: true,
   rownumbers: true,
   hoverrows: false,
   ignoreCase: true,
   pager: "#toolbar_search"
 
-grid_events.jqGrid('navGrid','#toolbar_search',{del:false,add:false,edit:false,search:false})
+grid_events.jqGrid('navGrid','#toolbar_search',{del:true,add:false,edit:true,search:false})
 grid_events.jqGrid('filterToolbar',{stringResult: true,searchOnEnter : false})

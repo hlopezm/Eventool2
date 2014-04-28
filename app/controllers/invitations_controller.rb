@@ -7,7 +7,7 @@ class InvitationsController < ApplicationController
   end
 
   def list
-    render :json => Invitation.all
+    render :json => Invitation.where("event_id=?", params[:event_id]).to_json(:include => :person)
   end
 
   def show
@@ -27,6 +27,14 @@ class InvitationsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def operation
+    if params[:oper] == "del"
+      Invitation.destroy(params[:id])
+    end
+
+    render :json => "ok"
   end
 
   def edit
