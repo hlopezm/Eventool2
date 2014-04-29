@@ -100,11 +100,11 @@ grid_events = $("#events").jqGrid
   datatype: "json",
   colNames: ["Nombre", "Inicio", "Fin", "Tareas", "Invitados"],
   colModel: [
-    {name: "name"},
-    {name: "start_at"},
-    {name: "end_at"},
-    {name: "tarks", align: "center", editable: true, formatter: link_tasks}
-    {name: "guests", align: "center", editable: true, formatter: link_guests}
+    {name: "name", editable: true},
+    {name: "start_at", editable: true},
+    {name: "end_at", editable: true},
+    {name: "tarks", align: "center", formatter: link_tasks}
+    {name: "guests", align: "center", formatter: link_guests}
   ],
   editurl: 'events_operation',
   loadonce: true,

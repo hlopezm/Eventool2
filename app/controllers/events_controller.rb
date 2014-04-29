@@ -42,6 +42,10 @@ class EventsController < ApplicationController
     authorize @event
   end
 
+  def operation
+    
+  end
+
   def update
     authorize @event
 
