@@ -7,7 +7,7 @@ class TasksController < ApplicationController
   end
 
   def list
-    render :json => Task.all.to_json(:include => :user)
+    render :json => Task.all #.to_json(:include => :user)
   end
 
   def show
