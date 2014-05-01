@@ -5,7 +5,7 @@ window.invitations_window = (event_id) ->
   $("#invitations_dialog").dialog
     close: ->
       $("#search").unbind("click")
-      destroy_grid("#invitations")
+      destroy_grid("#event_invitations")
     modal: true,
     open: ->
       invitations_grid(event_id)
@@ -20,7 +20,7 @@ window.people_window = (event_id) ->
   $("#people_dialog").dialog
     close: ->
       $("#invite").unbind("click")
-      destroy_grid("#people")
+      destroy_grid("#event_people")
     height: 340,
     modal: true,
     open: ->
@@ -30,10 +30,10 @@ window.people_window = (event_id) ->
         $.ajax
           url: "invite_people"
           data:
-            people_ids: $("#people").getGridParam("selarrrow")
+            people_ids: $("#event_people").getGridParam("selarrrow")
             event_id: event_id
           success: (data) ->
-            $("#invitations").jqGrid('setGridParam', {url:"invitations_list", datatype:"json"}).trigger("reloadGrid")
+            $("#event_invitations").jqGrid('setGridParam', {url:"invitations_list", datatype:"json"}).trigger("reloadGrid")
             $("#people_dialog").dialog("close")
 
     position: "center",
@@ -41,7 +41,7 @@ window.people_window = (event_id) ->
     width: 830,
 
 window.invitations_grid = (event_id) ->
-  $("#invitations").jqGrid
+  $("#event_invitations").jqGrid
     url: "invitations_list",
     postData: {event_id: event_id}
     datatype: "json",
@@ -58,13 +58,13 @@ window.invitations_grid = (event_id) ->
     ignoreCase: true,
     loadonce: true,
     rownumbers: true,
-    pager: "#invitations_toolbar_search"
+    pager: "#event_invitations_toolbar_search"
 
-  $("#invitations").jqGrid("navGrid", "#invitations_toolbar_search", {del:true,add:false,edit:false,search:false})
-  $("#invitations").jqGrid("filterToolbar", {stringResult: true,searchOnEnter: false})
+  $("#event_invitations").jqGrid("navGrid", "#event_invitations_toolbar_search", {del:true,add:false,edit:false,search:false})
+  $("#event_invitations").jqGrid("filterToolbar", {stringResult: true,searchOnEnter: false})
 
 window.people_grid = ->
-  $("#people").jqGrid
+  $("#event_people").jqGrid
     url: "people_list",
     datatype: "json",
     colNames: ["Nombre", "Titulo", "Dirección", "Telefono", "Email"],
@@ -79,10 +79,10 @@ window.people_grid = ->
     ignoreCase: true,
     loadonce: true,
     rownumbers: true,
-    pager: "#people_toolbar_search"
+    pager: "#event_people_toolbar_search"
 
-  $("#people").jqGrid('navGrid','#people_toolbar_search',{del:false,add:false,edit:true,search:false})
-  $("#people").jqGrid('filterToolbar',{stringResult: true,searchOnEnter: false})
+  $("#event_people").jqGrid('navGrid','#event_people_toolbar_search',{del:false,add:false,edit:true,search:false})
+  $("#event_people").jqGrid('filterToolbar',{stringResult: true,searchOnEnter: false})
 
 window.tasks_window = ->
   $("#tasks_dialog").dialog
