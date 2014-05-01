@@ -15,3 +15,4 @@
 //= require jquery_ujs
 //= require jquery.ui.all
 //= require jqgrid-jquery-rails
+//= require_tree .
